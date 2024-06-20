@@ -1,4 +1,4 @@
-name :  Simple Math Ops Job
+name : 1_Simple Math Ops Job
 
 on:
   workflow_call:
