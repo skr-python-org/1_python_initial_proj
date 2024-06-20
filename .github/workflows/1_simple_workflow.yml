@@ -1,0 +1,42 @@
+name: Simple Math Ops Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+        description: Deployment environment
+        required: true
+
+      space:
+        type: choice
+        options:
+          - feature
+          - qa
+          - synthetic
+          - actual
+          - release
+        description : Enter space value
+
+      method_name:
+        type: choice
+        options:
+          - add
+          - sub
+          - mul
+          - div
+        description : Enter method value
+
+
+
+jobs:
+  math_ops_launch:
+    uses : ./.github/workflows/1_simple_launch_workflow.yml
+    with:
+      environment : ${{ inputs.environment }}
+      space : ${{ inputs.space }}
+      method_name : ${{ inputs.method_name }}
