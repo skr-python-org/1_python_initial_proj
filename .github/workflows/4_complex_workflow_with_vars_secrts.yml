@@ -1,0 +1,33 @@
+
+
+name: Complex Math Ops Pipeline with Github Variables and Secrets
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+        description: Deployment environment
+        required: true
+      space:
+        type: choice
+        options:
+          - feature
+          - qa
+          - synthetic
+          - actual
+          - release
+        description : Enter space value
+
+
+jobs:
+  comp_math_ops_launch:
+    uses : ./.github/workflows/4_complex_launch_workflow_with_vars_secrts.yml
+    with:
+      environment : ${{ inputs.environment }}
+      space : ${{ inputs.space }}
+    secrets: inherit

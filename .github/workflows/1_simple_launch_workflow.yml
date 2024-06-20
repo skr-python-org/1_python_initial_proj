@@ -1,0 +1,37 @@
+name :  Simple Math Ops Job
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+        description: environment value
+      space:
+        required: true
+        type: string
+        description: space value
+      method_name:
+        required: true
+        type: string
+        description: method name value
+
+jobs:
+  build:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.8
+      - name: Install pip
+        run: |
+          python -m pip install --upgrade pip
+      - name: Install dependencies
+        run: |
+          pip install -e ".[dev]"
+      - name: Run python script
+        run: python generic/functs/run_code.py

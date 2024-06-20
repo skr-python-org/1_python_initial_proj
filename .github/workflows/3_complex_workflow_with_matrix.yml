@@ -1,0 +1,53 @@
+name: Complex Math Ops Pipeline With Matrix Strtagy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+        description: Deployment environment
+        required: true
+      space:
+        type: choice
+        options:
+          - feature
+          - qa
+          - synthetic
+          - actual
+          - release
+        description : Enter space value
+      method_name:
+        type: string
+        default: add
+        description : Enter method value
+      skiptest:
+        type: boolean
+        default: true
+        description: Skip Testing
+      arg_a:
+        type: number
+        default: 10
+        required: false
+        description: please arguument one
+      arg_b:
+        type: number
+        default: 15
+        required: false
+        description: please arguument two
+
+
+jobs:
+  comp_math_ops_launch:
+    uses : ./.github/workflows/3_complex_launch_workflow_with_matrix.yml
+    with:
+      environment : ${{ inputs.environment }}
+      space : ${{ inputs.space }}
+      method_name : ${{ inputs.method_name }}
+      skiptest: ${{ inputs.skiptest }}
+      arg_a: ${{ inputs.arg_a }}
+      arg_b: ${{ inputs.arg_b }}
+

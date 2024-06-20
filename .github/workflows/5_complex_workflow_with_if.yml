@@ -1,0 +1,44 @@
+name: Complex Math Ops Pipeline with If Condition
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+        description: Deployment environment
+        required: true
+      space:
+        type: choice
+        options:
+          - feature
+          - qa
+          - synthetic
+          - actual
+          - release
+        description : Enter space value
+      method_name:
+        type: string
+        default: add
+        description : Enter method value
+      skiptest:
+        type: boolean
+        default: false
+        description: Skip Testing
+      deployjob:
+        type: boolean
+        default: true
+        description: job should be deployed or not
+
+jobs:
+  comp_math_ops_launch:
+    uses : ./.github/workflows/5_complex_launch_workflow_with_if.yml
+    with:
+      environment : ${{ inputs.environment }}
+      space : ${{ inputs.space }}
+      method_name : ${{ inputs.method_name }}
+      skiptest: ${{ inputs.skiptest }}
+      deployjob: ${{ inputs.deployjob }}
