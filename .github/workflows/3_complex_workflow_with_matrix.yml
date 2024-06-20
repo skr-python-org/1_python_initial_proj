@@ -1,4 +1,4 @@
-name: Complex Math Ops Pipeline With Matrix Strtagy
+name: 3_Complex Math Ops Pipeline With Matrix Strtagy
 
 on:
   workflow_dispatch:

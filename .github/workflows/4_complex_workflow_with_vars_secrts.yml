@@ -1,6 +1,4 @@
-
-
-name: Complex Math Ops Pipeline with Github Variables and Secrets
+name: 4_Complex Math Ops Pipeline with Github Variables and Secrets
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Simple Math Ops Pipeline
+name: 1_Simple Math Ops Pipeline
 
 on:
   workflow_dispatch:
