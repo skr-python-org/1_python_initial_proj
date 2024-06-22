@@ -4,8 +4,8 @@ import subprocess
 import sys
 import setuptools
 
-def install(package):
-    subprocess.check_call([sys.excutable,"-m","pip","install",package])
+#def install(package):
+#    subprocess.check_call([sys.excutable,"-m","pip","install",package])
 
 
 PACKAGE_REQUIREMENTS = [
